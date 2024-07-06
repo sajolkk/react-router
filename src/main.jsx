@@ -11,6 +11,8 @@ import Layout from "./components/Layout";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
 import Contact from "./components/contact/Contact";
+import User from "./components/user/User";
+import Github, { gitHubInfoLoader } from "./components/gitHub/Github"
 
 // router start here
 // const router = createBrowserRouter([
@@ -40,8 +42,14 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route path="" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
+      <Route path="about" element={<About />} />
+      <Route path="contact" element={<Contact />} />
+      <Route path="user/:userId" element={<User />} />
+      <Route
+        loader={gitHubInfoLoader}
+        path="github"
+        element={<Github />}
+      />
     </Route>
   )
 );
